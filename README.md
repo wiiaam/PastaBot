@@ -2,7 +2,7 @@
 IRC administration bot for [#pasta](irc://irc.rizon.net/#pasta) (irc.rizon.net)
 
 ## Current Features
-- Html title reporting
+- (partial) Html title reporting
 - Administration
 - Intros
 
