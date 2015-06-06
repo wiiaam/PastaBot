@@ -15,7 +15,7 @@ public class Bots implements Module{
 				String[] outputs = new String[1];
 				String target = m.getParam();
 				if(!target.startsWith("#")) target = m.getSender();
-				outputs[0] = "PRIVMSG " + target + " :Reporting in! [Java]";
+				outputs[0] = "PRIVMSG " + target + " :Reporting in! [Java] See .help";
 				return outputs;
 			}
 		}
