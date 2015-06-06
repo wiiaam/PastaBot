@@ -40,6 +40,7 @@ public class IrcBot {
 		modules.add(new Intros());
 		modules.add(new Cucks());
 		modules.add(new Quote());
+		modules.add(new Help());
 		
 		
 		if(admins == null){
