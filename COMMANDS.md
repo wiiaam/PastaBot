@@ -4,7 +4,7 @@
 - `.bots` - responds to [IBIP](https://github.com/Teknikode/IBIP)
 - `.quote <user>` - Displays a random quote by that user
 - `.rules` - Displays the channel rules
-- `.intro <action> <intro>` - `set` or `del` your intro. If the action is `set` an intro must be specified.
+- `.intro <action>` - `set` or `del` your intro. If the action is `set` an intro must be specified.
 - `.listignores` - Lists all users that are currently ignored by the bot.
 - `.listcucks` - Lists all users currently in the cucks list.
 
