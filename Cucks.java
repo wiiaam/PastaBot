@@ -53,60 +53,59 @@ public class Cucks implements Module {
 		String[] outputs = new String[1];
 		String target = m.getParam();
 		if(!target.startsWith("#")) target = m.getSender();
+		if(m.isBotCommand() && m.getBotCommand().equals("cuck")){
+			if(admin){
+				if(m.hasBotParams()){
+					for(int i = 0; i < m.getBotParams().size(); i++){
+						Cucks.add(m.getBotParams().get(i));
+					}
+					write();
+					outputs[0] = "PRIVMSG " + target + " :The specified users have been cucked";
+					return outputs;
+				}
+				else{
+					outputs[0] = "PRIVMSG " + target + " :No users were specified";
+					return outputs;
+				}
+			}
+		}
+		if(m.getBotCommand().equals("uncuck")){
+			if(admin){
+				if(m.hasBotParams()){
+					for(int i = 0; i < m.getBotParams().size(); i++){
+						Cucks.remove(m.getBotParams().get(i));
+					}
+					write();
+					outputs[0] = "PRIVMSG " + target + " :The specified users have been uncucked";
+					return outputs;
+				}
+				else{
+					outputs[0] = "PRIVMSG " + target + " :No users were specified";
+					return outputs;
+				}
+			}
+		}
+		if(m.getBotCommand().equals("listcucks")){
+			outputs[0] = "";
+			for(String s : Cucks){
+				outputs[0] += s + ", ";
+			}
+			if(outputs[0].length() > 0){
+				outputs[0] = outputs[0].substring(0, outputs[0].length() - 2);
+			}
+			else{
+				outputs[0] = "No users are currently cucked";
+			}
+			outputs[0] = "PRIVMSG " + target + " :" + outputs[0];
+			return outputs;
+		}
 		if(m.getCommand().equals("PRIVMSG") && has(m.getSender())){
 			outputs = new String[2];
 			outputs[0] = "PRIVMSG " + target + " :" + m.getSender() + ": shutup cuck";
 			outputs[1] = "KICK " + m.getParam() + " " + m.getSender() + " :cuck"; 
 			return outputs;
 		}
-		if(m.isBotCommand()){
-			if(m.getBotCommand().equals("cuck")){
-				if(admin){
-					if(m.hasBotParams()){
-						for(int i = 0; i < m.getBotParams().size(); i++){
-							Cucks.add(m.getBotParams().get(i));
-						}
-						write();
-						outputs[0] = "PRIVMSG " + target + " :The specified users have been cucked";
-						return outputs;
-					}
-					else{
-						outputs[0] = "PRIVMSG " + target + " :No users were specified";
-						return outputs;
-					}
-				}
-			}
-			if(m.getBotCommand().equals("uncuck")){
-				if(admin){
-					if(m.hasBotParams()){
-						for(int i = 0; i < m.getBotParams().size(); i++){
-							Cucks.remove(m.getBotParams().get(i));
-						}
-						write();
-						outputs[0] = "PRIVMSG " + target + " :The specified users have been uncucked";
-						return outputs;
-					}
-					else{
-						outputs[0] = "PRIVMSG " + target + " :No users were specified";
-						return outputs;
-					}
-				}
-			}
-			if(m.getBotCommand().equals("listcucks")){
-				outputs[0] = "";
-				for(String s : Cucks){
-					outputs[0] += s + ", ";
-				}
-				if(outputs[0].length() > 0){
-					outputs[0] = outputs[0].substring(0, outputs[0].length() - 2);
-				}
-				else{
-					outputs[0] = "No users are currently cucked";
-				}
-				outputs[0] = "PRIVMSG " + target + " :" + outputs[0];
-				return outputs;
-			}
-		}
+		
 		return null;
 	}
 

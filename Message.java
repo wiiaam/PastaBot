@@ -4,13 +4,13 @@ import java.util.ArrayList;
 public class Message {
 	
 	private String commandChar = ".";
-	private String sender;
-	private String senderaddress;
-	private String command;
-	public String param;
-	private String trailing;
+	private String sender = "";
+	private String senderaddress  = "";
+	private String command  = "";
+	public String param  = "";
+	private String trailing  = "";
 	private boolean isbotcommand = false;
-	private String botcommand;
+	private String botcommand  = "";
 	private ArrayList<String> botparams = new ArrayList<String>();
 	
 	public Message(String message){
