@@ -5,6 +5,8 @@ IRC administration bot for [#pasta](irc://irc.rizon.net/#pasta) (irc.rizon.net)
 - (partial) Html title reporting
 - Administration
 - Intros
+- Versions
+- Quotes
 
 ## Commands
 Commands can be found in the [COMMANDS](COMMANDS.md) file

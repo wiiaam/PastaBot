@@ -41,6 +41,7 @@ public class IrcBot {
 		modules.add(new Cucks());
 		modules.add(new Quote());
 		modules.add(new Help());
+		modules.add(new Version());
 		
 		
 		if(admins == null){
@@ -157,6 +158,7 @@ public class IrcBot {
 				String line = serverin.nextLine();
 				clientout.println(line);
 				Message m = new Message(line);
+				clientout.println(m.getTrailing());
 				final Message message = m;
 				if(m.getCommand().equals("PING")){
 					send("PONG :" + m.getTrailing());

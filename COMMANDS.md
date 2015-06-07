@@ -8,6 +8,7 @@
 - `.intro <action>` - `set` or `del` your intro. If the action is `set` an intro must be specified.
 - `.listignores` - Lists all users that are currently ignored by the bot.
 - `.listcucks` - Lists all users currently in the cucks list.
+- `.version <users>` - Reports the versions of the requested users.
 
 ## Admin only commands
 - `.admin <action> <users>` - (`add`, `del`) the specified users to the admin group.
