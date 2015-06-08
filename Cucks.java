@@ -57,7 +57,13 @@ public class Cucks implements Module {
 			if(admin){
 				if(m.hasBotParams()){
 					for(int i = 0; i < m.getBotParams().size(); i++){
-						Cucks.add(m.getBotParams().get(i));
+						if(m.getBotParams().get(i).equals("PastaBot")){
+							outputs = new String[2];
+							outputs[1] = "PRIVMSG " + target + " :You can't cuck myself. Nice try 1,1big guy";
+						}
+						else{
+							Cucks.add(m.getBotParams().get(i));
+						}
 					}
 					write();
 					outputs[0] = "PRIVMSG " + target + " :The specified users have been cucked";
