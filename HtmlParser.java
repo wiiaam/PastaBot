@@ -48,13 +48,16 @@ public class HtmlParser implements Module{
 						else if(next.contains("<title")){
 							titlefound = true;
 							next = next.split("<title")[1];
+							/*
 							while(scan.hasNext()){
 								next = scan.next();
 								if(next.contains(">")){
 									next = next.split(">")[1];
 									break;
 								}
+								
 							}
+							*/
 						}
 						if(titlefound){
 							if(next.contains("</title>")){
@@ -79,7 +82,8 @@ public class HtmlParser implements Module{
 				}
 				catch(Exception e){
 					String[] outputs = new String[1];
-					outputs[0] = ("PRIVMSG " + target + " :Could not read url");
+					e.printStackTrace();
+					outputs[0] = ("PRIVMSG " + target + " :Could not read url, " + e);
 					return outputs;
 				}
 			}
