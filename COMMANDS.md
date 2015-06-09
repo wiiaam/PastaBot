@@ -10,6 +10,7 @@
 - `.listcucks` - Lists all users currently in the cucks list.
 - `.version <users>`, `.ver <users>` - Reports the versions of the requested users.
 - `.listtriggers` - Lists all of the word triggers and their outputs.
+- `.ping <user>` - Sends a ctcp PING to the user and shows the result.
 
 ## Admin only commands
 - `.admin <action> <users>` - (`add`, `del`) the specified users to the admin group.
