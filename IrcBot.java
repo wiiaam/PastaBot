@@ -44,6 +44,7 @@ public class IrcBot {
 		modules.add(new Version());
 		modules.add(new Administration());
 		modules.add(new Triggers());
+		modules.add(new Ping());
 		
 		
 		if(admins == null){
@@ -162,9 +163,6 @@ public class IrcBot {
 				Message m = new Message(line);
 				clientout.println(m.getTrailing());
 				final Message message = m;
-				if(m.getCommand().equals("PING")){
-					send("PONG :" + m.getTrailing());
-				}
 				final boolean senderisadmin = (admins.has(message.getSender()) || permaadmin.equals(message.getSender()));
 				if(ignores.has(m.getSender()) && !senderisadmin){
 					clientout.println("ignoring message");
