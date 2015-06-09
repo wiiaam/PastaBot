@@ -35,13 +35,15 @@ public class IrcBot {
 		modules.add(ignores);
 		
 		modules.add(new Bots());
-		modules.add(new HtmlParser());
+		//modules.add(new HtmlParser());
 		modules.add(new Rules());
 		modules.add(new Intros());
 		modules.add(new Cucks());
 		modules.add(new Quote());
 		modules.add(new Help());
 		modules.add(new Version());
+		modules.add(new Administration());
+		modules.add(new Triggers());
 		
 		
 		if(admins == null){
