@@ -17,7 +17,7 @@
 - `.unignore <users>` - Unignores the specified users.
 - `.cuck <users>` - Adds the users to the cuck list.
 - `.uncuck <users>` - Removes the users from the cuck list. 
-- `.trigger <trigger> <output>` - Adds a trigger.
+- `.trigger <trigger> : <output>` - Adds a trigger.
 - `.untrigger <trigger>` - Removes the trigger.
 - `.kb <users>` - Kicks and bans the users.
 - `.ub <users>` - Unbans the users.
