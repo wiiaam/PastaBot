@@ -35,6 +35,11 @@ public class Ping implements Module {
 				return outputs;
 			}
 		}
+		if(m.getTrailing().substring(0, 5).equals("PING")){
+			String[] outputs = new String[1];
+			outputs[0] = "NOTICE " + m.getSender() + " :" + m.getTrailing();
+			return outputs;
+		}
 		if(m.getCommand().equals("PING")){
 			String[] outputs = new String[1];
 			outputs[0] = "PONG :" + m.getTrailing();
