@@ -105,4 +105,12 @@ public class Message {
 	public ArrayList<String> getBotParams(){
 		return botparams;
 	}
+	public String getBotParamsString(){
+		String params = "";
+		for(int i = 0; i < botparams.size(); i++){
+			params += botparams.get(i) + " ";
+		}
+		params = params.trim();
+		return params;
+	}
 }
