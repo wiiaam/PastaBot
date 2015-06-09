@@ -17,7 +17,7 @@ public class Rules implements Module {
 				outputs[1] = "PRIVMSG " + target + " :Rule 2: Tag all NSFW links";
 				outputs[2] = "PRIVMSG " + target + " :Rule 3: Bots must follow IBIP, this can be found at https://github.com/Teknikode/IBIP";
 				outputs[3] = "PRIVMSG " + target + " :Rule 4: installgen2 is a cuck";
-				outputs[4] = "PRIVMSG " + target + " :Rule 5: No furries";
+				outputs[4] = "PRIVMSG " + target + " :Rule 5: No australians";
 				return outputs;
 			}
 		}
