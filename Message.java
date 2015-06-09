@@ -6,6 +6,7 @@ public class Message {
 	private String commandChar = ".";
 	private String sender = "";
 	private String senderaddress  = "";
+	private String user = "";
 	private String command  = "";
 	public String param  = "";
 	private String trailing  = "";
@@ -59,7 +60,8 @@ public class Message {
 		String[] sendersplit = sender.split("!");
 		if(sendersplit.length > 1){
 			sender = sendersplit[0];
-			senderaddress = sendersplit[1];
+			senderaddress = sendersplit[1].split("@")[0].substring(1);
+			senderaddress = sendersplit[1].split("@")[1];
 		}
 		else{
 			senderaddress = sender;
