@@ -7,6 +7,7 @@ IRC administration bot for [#pasta](irc://irc.rizon.net/#pasta) (irc.rizon.net)
 - Intros
 - Versions
 - Quotes
+- Triggers
 
 ## Commands
 Commands can be found in the [COMMANDS](COMMANDS.md) file

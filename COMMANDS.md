@@ -9,6 +9,7 @@
 - `.listignores` - Lists all users that are currently ignored by the bot.
 - `.listcucks` - Lists all users currently in the cucks list.
 - `.version <users>`, `.ver <users>` - Reports the versions of the requested users.
+- `.listtriggers` - Lists all of the word triggers and their outputs.
 
 ## Admin only commands
 - `.admin <action> <users>` - (`add`, `del`) the specified users to the admin group.
@@ -16,6 +17,10 @@
 - `.unignore <users>` - Unignores the specified users.
 - `.cuck <users>` - Adds the users to the cuck list.
 - `.uncuck <users>` - Removes the users from the cuck list. 
+- `.trigger <trigger> <output>` - Adds a trigger.
+- `.untrigger <trigger>` - Removes the trigger.
+- `.kb <users>` - Kicks and bans the users.
+- `.ub <users>` - Unbans the users.
 
 ====================
 
