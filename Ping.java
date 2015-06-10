@@ -12,7 +12,7 @@ public class Ping implements Module {
 	@Override
 	public String[] outputs() {
 		String target = "PRIVMSG " + m.getParam();
-		if(!target.startsWith("#")) target = "NOTICE " + m.getSender();
+		if(!m.getParam().startsWith("#")) target = "NOTICE " + m.getSender();
 		if(m.getBotCommand().equals("ping")){
 			if(m.hasBotParams()){
 				String[] outputs = new String[m.getBotParams().size()];

@@ -15,7 +15,7 @@ public class Version implements Module {
 	public String[] outputs() {
 		String[] outputs = new String[1];
 		String target = "PRIVMSG " + m.getParam();
-		if(!target.startsWith("#")) target = "NOTICE " + m.getSender();
+		if(!m.getParam().startsWith("#")) target = "NOTICE " + m.getSender();
 		if(m.getTrailing().equals("VERSION")){
 			outputs[0] = "NOTICE " + target + " :VERSION PastaBot 4.20 by Java™ Enterprises";
 			return outputs;

@@ -10,8 +10,6 @@ public class Help implements Module {
 		if(m.isBotCommand()){
 			if(m.getBotCommand().equals("help")){
 				String[] outputs = new String[1];
-				String target = m.getParam();
-				if(!target.startsWith("#")) target = m.getSender();
 				outputs[0] = "NOTICE " + m.getSender() + " :Commands can be found at bit.ly/1G0UB0b";
 				return outputs;
 			}

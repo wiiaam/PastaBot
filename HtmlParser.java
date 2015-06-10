@@ -20,7 +20,7 @@ public class HtmlParser implements Module{
 	
 	public String[] outputs(){
 		String target = "PRIVMSG " + m.getParam();
-		if(!target.startsWith("#")) target = "NOTICE " + m.getSender();
+		if(!m.getParam().startsWith("#")) target = "NOTICE " + m.getSender();
 		String[] messageSplit = m.getTrailing().split("\\s+");
 		if(m.isBotCommand() && admin){
 			if(m.getBotCommand().equals(command)){

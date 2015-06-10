@@ -10,7 +10,7 @@ public class Administration implements Module {
 		if(m.getBotCommand().equals("kb")){
 			if(m.hasBotParams()){
 				String target = "PRIVMSG " + m.getParam();
-				if(!target.startsWith("#")) {
+				if(!m.getParam().startsWith("#")) {
 					target = "NOTICE " + m.getSender();
 					if(m.getBotParams().size() < 2){
 						outputs = new String[1];

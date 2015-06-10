@@ -12,7 +12,7 @@ public class Bots implements Module{
 			if(m.getBotCommand().equals(command)){
 				String[] outputs = new String[1];
 				String target = "PRIVMSG " + m.getParam();
-				if(!target.startsWith("#")) target = "NOTICE " + m.getSender();
+				if(!m.getParam().startsWith("#")) target = "NOTICE " + m.getSender();
 				outputs[0] = target + " :Reporting in! [Java] See .help";
 				return outputs;
 			}

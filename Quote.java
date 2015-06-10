@@ -16,7 +16,7 @@ public class Quote implements Module {
 	public String[] outputs() {
 		String[] outputs = new String[1];
 		String target = "PRIVMSG " + m.getParam();
-		if(!target.startsWith("#")) target = "NOTICE " + m.getSender();
+		if(!m.getParam().startsWith("#")) target = "NOTICE " + m.getSender();
 		if(m.isBotCommand()){
 			if(m.getBotCommand().equals("quote")){
 				if(m.hasBotParams()){

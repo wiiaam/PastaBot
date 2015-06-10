@@ -8,7 +8,7 @@ public class Rules implements Module {
 	@Override
 	public String[] outputs() {
 		String target = "PRIVMSG " + m.getParam();
-		if(!target.startsWith("#")) target = "NOTICE " + m.getSender();
+		if(!m.getParam().startsWith("#")) target = "NOTICE " + m.getSender();
 		if(m.isBotCommand()){
 			if(m.getBotCommand().equals(command)){
 				System.out.println(".rules");

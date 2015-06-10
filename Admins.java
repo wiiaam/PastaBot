@@ -59,7 +59,7 @@ public class Admins implements Module{
 		if(m.isBotCommand()){
 			if(m.getBotCommand().equals(command)){
 				String target = "PRIVMSG " + m.getParam();
-				if(!target.startsWith("#")) target = "NOTICE " + m.getSender();
+				if(!m.getParam().startsWith("#")) target = "NOTICE " + m.getSender();
 				boolean selfdelete = false;
 				String todo = "";
 				if(!admin){
