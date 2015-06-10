@@ -159,6 +159,7 @@ public class IrcBot {
 	private void listenToServer(){
 		clientout.println("Listening to server");
 		send("JOIN " + props.getProperty("channel"));
+		send("JOIN #/g/bots");
 		while(true){
 			if(serverin.hasNextLine()){
 				String line = serverin.nextLine();
