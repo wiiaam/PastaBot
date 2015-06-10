@@ -17,7 +17,7 @@ public class Ping implements Module {
 			if(m.hasBotParams()){
 				String[] outputs = new String[m.getBotParams().size()];
 				for(int i = 0; i < m.getBotParams().size(); i++){
-					outputs[i] = m.getBotParams().get(i) + " :PING " + System.currentTimeMillis() + "";
+					outputs[i] = "PRIVMSG " + m.getBotParams().get(i) + " :PING " + System.currentTimeMillis() + "";
 					pings.add(m.getBotParams().get(i));
 					targets.put(m.getBotParams().get(i), target);
 				}
