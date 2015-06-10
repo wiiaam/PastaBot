@@ -46,6 +46,7 @@ public class IrcBot {
 		modules.add(new Triggers());
 		modules.add(new Ping());
 		modules.add(new Fortune());
+		modules.add(new Rainbow());
 		
 		
 		if(admins == null){
