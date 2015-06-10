@@ -5,7 +5,10 @@
 - `.help` - Displays a link to this commands file.
 - `.quote <user>` - Displays a random quote by that user.
 - `.rules` - Displays the channel rules.
-- `.intro <action>` - `set` or `del` your intro. If the action is `set` an intro must be specified.
+- `.intro set <intro>` - Sets your intro.
+- `.intro del` - Deletes your intro.
+- `.intro view` - View your intro.
+- `.intro view <user>` - View a specific user's intro.
 - `.listignores` - Lists all users that are currently ignored by the bot.
 - `.listcucks` - Lists all users currently in the cucks list.
 - `.version <users>`, `.ver <users>` - Reports the versions of the requested users.

@@ -60,6 +60,18 @@ public class Intros implements Module {
 						todo = "nointro";
 					}
 				}
+				else if(m.getBotParams().get(0).equals("view")){
+					if(m.getBotParams().size() > 2){
+						todo = "toomany";
+					}
+					else if(m.getBotParams().size() == 2){
+						if(props.getProperty(m.getBotParams().get(1)) != null && !props.getProperty(m.getBotParams().get(1)).equals("")) todo = "viewother " + m.getBotParams().get(1);
+						else todo = "nointroother";
+						
+					}
+					else if(props.getProperty(m.getSender()) != null && !props.getProperty(m.getSender()).equals("")) todo = "view";
+					else todo = "nointro";
+				}
 				
 				
 				try {
@@ -71,7 +83,7 @@ public class Intros implements Module {
 				
 				if(todo.equals("")){
 					String[] toreturn = new String[1];
-					toreturn[0] = target + " :Parameter not recognized. Usage: .intro <parameter> <intro> Parameters are set, del ";
+					toreturn[0] = target + " :Parameter not recognized. Usage: .intro <parameter> <intro> Parameters are set, del, view ";
 					return toreturn;
 				}
 				if(todo.equals("nointro")){
@@ -79,9 +91,29 @@ public class Intros implements Module {
 					toreturn[0] = target + " :You do not have an intro set";
 					return toreturn;
 				}
+				if(todo.equals("nointroother")){
+					String[] toreturn = new String[1];
+					toreturn[0] = target + " :Intro not found";
+					return toreturn;
+				}
+				if(todo.equals("toomany")){
+					String[] toreturn = new String[1];
+					toreturn[0] = target + " :Too many arguments. Usage: .intro view <user> ";
+					return toreturn;
+				}
 				if(todo.equals("no")){
 					String[] toreturn = new String[1];
 					toreturn[0] = target + " :fk u";
+					return toreturn;
+				}
+				if(todo.equals("view")){
+					String[] toreturn = new String[1];
+					toreturn[0] = target + " :" + props.getProperty(m.getSender());
+					return toreturn;
+				}
+				if(todo.startsWith("viewother")){
+					String[] toreturn = new String[1];
+					toreturn[0] = target + " :" + props.getProperty(todo.split("\\s+")[1]);
 					return toreturn;
 				}
 				else{
