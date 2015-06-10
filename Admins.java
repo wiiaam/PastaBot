@@ -58,8 +58,8 @@ public class Admins implements Module{
 	public String[] outputs() {
 		if(m.isBotCommand()){
 			if(m.getBotCommand().equals(command)){
-				String target = m.getParam();
-				if(!target.startsWith("#")) target = m.getSender();
+				String target = "PRIVMSG " + m.getParam();
+				if(!target.startsWith("#")) target = "NOTICE " + m.getSender();
 				boolean selfdelete = false;
 				String todo = "";
 				if(!admin){
@@ -86,22 +86,22 @@ public class Admins implements Module{
 				}
 				if(todo.equals("")){
 					String[] toreturn = new String[1];
-					toreturn[0] = "PRIVMSG " + target + " :Parameter not recognized. Usage: .add <parameter> <admins> Parameters are add, del ";
+					toreturn[0] = target + " :Parameter not recognized. Usage: .add <parameter> <admins> Parameters are add, del ";
 					return toreturn;
 				}
 				else if(todo.equals("privilege")){
 					String[] toreturn = new String[1];
-					toreturn[0] = "PRIVMSG " + target + " :" + m.getSender() + ": You are not admin, please check your privilege";
+					toreturn[0] = target + " :" + m.getSender() + ": You are not admin, please check your privilege";
 					return toreturn;
 				}
 				else{
 					String[] toreturn;
 					if(selfdelete){
 						toreturn = new String[2];
-						toreturn[1] = "PRIVMSG " + target + " :You cannot delete yourself from the admins list";
+						toreturn[1] = target + " :You cannot delete yourself from the admins list";
 					}
 					else toreturn = new String[1];
-					toreturn[0] = "PRIVMSG " + target + " :The specified admins have been " + todo;
+					toreturn[0] = target + " :The specified admins have been " + todo;
 					write();
 					return toreturn;
 				}

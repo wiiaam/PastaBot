@@ -9,12 +9,12 @@ public class Administration implements Module {
 		String[] outputs;
 		if(m.getBotCommand().equals("kb")){
 			if(m.hasBotParams()){
-				String target = m.getParam();
-				if(!target.startsWith("#")){
-					target = m.getSender();
+				String target = "PRIVMSG " + m.getParam();
+				if(!target.startsWith("#")) {
+					target = "NOTICE " + m.getSender();
 					if(m.getBotParams().size() < 2){
 						outputs = new String[1];
-						outputs[1] = "PRIVMSG " + target + " :Not enough parameters. Usage: .kb <room> <users>";
+						outputs[1] = target + " :Not enough parameters. Usage: .kb <room> <users>";
 					}
 					else{
 						outputs = new String[2];
@@ -43,7 +43,7 @@ public class Administration implements Module {
 					target = m.getSender();
 					if(m.getBotParams().size() < 2){
 						outputs = new String[1];
-						outputs[1] = "PRIVMSG " + target + " :Not enough parameters. Usage: .ub <room> <users>";
+						outputs[1] = target + " :Not enough parameters. Usage: .ub <room> <users>";
 					}
 					else{
 						outputs = new String[(m.getBotParams().size() - 1 )];

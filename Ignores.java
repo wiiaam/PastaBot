@@ -51,8 +51,8 @@ public class Ignores implements Module {
 	@Override
 	public String[] outputs() {
 		String[] outputs = new String[1];
-		String target = m.getParam();
-		if(!target.startsWith("#")) target = m.getSender();
+		String target = "PRIVMSG " + m.getParam();
+		if(!target.startsWith("#")) target = "NOTICE " + m.getSender();
 		if(m.isBotCommand()){
 			if(m.getBotCommand().equals("ignore")){
 				if(admin){
@@ -61,11 +61,11 @@ public class Ignores implements Module {
 							ignores.add(m.getBotParams().get(i));
 						}
 						write();
-						outputs[0] = "PRIVMSG " + target + " :The specified users have been ignored";
+						outputs[0] = target + " :The specified users have been ignored";
 						return outputs;
 					}
 					else{
-						outputs[0] = "PRIVMSG " + target + " :No users were specified";
+						outputs[0] = target + " :No users were specified";
 						return outputs;
 					}
 				}
@@ -77,11 +77,11 @@ public class Ignores implements Module {
 							ignores.remove(m.getBotParams().get(i));
 						}
 						write();
-						outputs[0] = "PRIVMSG " + target + " :The specified users have been unignored";
+						outputs[0] = target + " :The specified users have been unignored";
 						return outputs;
 					}
 					else{
-						outputs[0] = "PRIVMSG " + target + " :No users were specified";
+						outputs[0] = target + " :No users were specified";
 						return outputs;
 					}
 				}
@@ -97,7 +97,7 @@ public class Ignores implements Module {
 				else{
 					outputs[0] = "No users are currently ignored";
 				}
-				outputs[0] = "PRIVMSG " + target + " :" + outputs[0];
+				outputs[0] = target + " :" + outputs[0];
 				return outputs;
 			}
 		}

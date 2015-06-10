@@ -11,9 +11,9 @@ public class Bots implements Module{
 		if(m.isBotCommand()){
 			if(m.getBotCommand().equals(command)){
 				String[] outputs = new String[1];
-				String target = m.getParam();
-				if(!target.startsWith("#")) target = m.getSender();
-				outputs[0] = "PRIVMSG " + target + " :Reporting in! [Java] See .help";
+				String target = "PRIVMSG " + m.getParam();
+				if(!target.startsWith("#")) target = "NOTICE " + m.getSender();
+				outputs[0] = target + " :Reporting in! [Java] See .help";
 				return outputs;
 			}
 		}

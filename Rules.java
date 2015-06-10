@@ -7,17 +7,17 @@ public class Rules implements Module {
 
 	@Override
 	public String[] outputs() {
-		String target = m.getParam();
-		if(!target.startsWith("#")) target = m.getSender();
+		String target = "PRIVMSG " + m.getParam();
+		if(!target.startsWith("#")) target = "NOTICE " + m.getSender();
 		if(m.isBotCommand()){
 			if(m.getBotCommand().equals(command)){
 				System.out.println(".rules");
 				String[] outputs  = new String[5];
-				outputs[0] = "PRIVMSG " + target + " :Rule 1: No Spamming";
-				outputs[1] = "PRIVMSG " + target + " :Rule 2: Tag all NSFW links";
-				outputs[2] = "PRIVMSG " + target + " :Rule 3: Bots must follow IBIP, this can be found at https://github.com/Teknikode/IBIP";
-				outputs[3] = "PRIVMSG " + target + " :Rule 4: installgen2 is a cuck";
-				outputs[4] = "PRIVMSG " + target + " :Rule 5: No australians";
+				outputs[0] = target + " :Rule 1: No Spamming";
+				outputs[1] = target + " :Rule 2: Tag all NSFW links";
+				outputs[2] = target + " :Rule 3: Bots must follow IBIP, this can be found at https://github.com/Teknikode/IBIP";
+				outputs[3] = target + " :Rule 4: installgen2 is a cuck";
+				outputs[4] = target + " :Rule 5: No australians";
 				return outputs;
 			}
 		}

@@ -51,26 +51,26 @@ public class Cucks implements Module {
 	@Override
 	public String[] outputs() {
 		String[] outputs = new String[1];
-		String target = m.getParam();
-		if(!target.startsWith("#")) target = m.getSender();
+		String target = "PRIVMSG " + m.getParam();
+		if(!target.startsWith("#")) target = "NOTICE " + m.getSender();
 		if(m.isBotCommand() && m.getBotCommand().equals("cuck")){
 			if(admin){
 				if(m.hasBotParams()){
 					for(int i = 0; i < m.getBotParams().size(); i++){
 						if(m.getBotParams().get(i).equals("PastaBot")){
 							outputs = new String[2];
-							outputs[1] = "PRIVMSG " + target + " :You can't cuck myself. Nice try 1,1big guy";
+							outputs[1] = target + " :You can't cuck me. Nice try 1,1big guy";
 						}
 						else{
 							Cucks.add(m.getBotParams().get(i));
 						}
 					}
 					write();
-					outputs[0] = "PRIVMSG " + target + " :The specified users have been cucked";
+					outputs[0] = target + " :The specified users have been cucked";
 					return outputs;
 				}
 				else{
-					outputs[0] = "PRIVMSG " + target + " :No users were specified";
+					outputs[0] = target + " :No users were specified";
 					return outputs;
 				}
 			}
@@ -82,11 +82,11 @@ public class Cucks implements Module {
 						Cucks.remove(m.getBotParams().get(i));
 					}
 					write();
-					outputs[0] = "PRIVMSG " + target + " :The specified users have been uncucked";
+					outputs[0] = target + " :The specified users have been uncucked";
 					return outputs;
 				}
 				else{
-					outputs[0] = "PRIVMSG " + target + " :No users were specified";
+					outputs[0] = target + " :No users were specified";
 					return outputs;
 				}
 			}
@@ -102,12 +102,12 @@ public class Cucks implements Module {
 			else{
 				outputs[0] = "No users are currently cucked";
 			}
-			outputs[0] = "PRIVMSG " + target + " :" + outputs[0];
+			outputs[0] = target + " :" + outputs[0];
 			return outputs;
 		}
 		if(m.getCommand().equals("PRIVMSG") && has(m.getSender())){
 			outputs = new String[2];
-			outputs[0] = "PRIVMSG " + target + " :" + m.getSender() + ": shutup cuck";
+			outputs[0] = target + " :" + m.getSender() + ": shutup cuck";
 			outputs[1] = "KICK " + m.getParam() + " " + m.getSender() + " :cuck"; 
 			return outputs;
 		}

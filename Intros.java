@@ -31,8 +31,8 @@ public class Intros implements Module {
 		}
 		if(m.isBotCommand()){
 			if(m.getBotCommand().equals(command)){
-				String target = m.getParam();
-				if(!target.startsWith("#")) target = m.getSender();
+				String target = "PRIVMSG " + m.getParam();
+				if(!target.startsWith("#")) target = "NOTICE " + m.getSender();
 				String todo = "";
 				String intro = "";
 				if(!m.hasBotParams()){}
@@ -71,23 +71,23 @@ public class Intros implements Module {
 				
 				if(todo.equals("")){
 					String[] toreturn = new String[1];
-					toreturn[0] = "PRIVMSG " + target + " :Parameter not recognized. Usage: .intro <parameter> <intro> Parameters are set, del ";
+					toreturn[0] = target + " :Parameter not recognized. Usage: .intro <parameter> <intro> Parameters are set, del ";
 					return toreturn;
 				}
 				if(todo.equals("nointro")){
 					String[] toreturn = new String[1];
-					toreturn[0] = "PRIVMSG " + target + " :You do not have an intro set";
+					toreturn[0] = target + " :You do not have an intro set";
 					return toreturn;
 				}
 				if(todo.equals("no")){
 					String[] toreturn = new String[1];
-					toreturn[0] = "PRIVMSG " + target + " :fk u";
+					toreturn[0] = target + " :fk u";
 					return toreturn;
 				}
 				else{
 					String[] toreturn;
 					toreturn = new String[1];
-					toreturn[0] = "PRIVMSG " + target + " :Your intro has been " + todo;
+					toreturn[0] = target + " :Your intro has been " + todo;
 					return toreturn;
 				}
 			}

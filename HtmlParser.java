@@ -19,14 +19,14 @@ public class HtmlParser implements Module{
 	}
 	
 	public String[] outputs(){
-		String target = m.getParam();
-		if(!target.startsWith("#")) target = m.getSender();
+		String target = "PRIVMSG " + m.getParam();
+		if(!target.startsWith("#")) target = "NOTICE " + m.getSender();
 		String[] messageSplit = m.getTrailing().split("\\s+");
 		if(m.isBotCommand() && admin){
 			if(m.getBotCommand().equals(command)){
 				String[] outputs = new String[1];
-				if(on) outputs[0] = "PRIVMSG " + target + " :Title reporting is now off";
-				else outputs[0] = "PRIVMSG " + target + " :Title reporting is now on";
+				if(on) outputs[0] = target + " :Title reporting is now off";
+				else outputs[0] = target + " :Title reporting is now on";
 				on = !on;
 				return outputs;
 			}
@@ -77,13 +77,13 @@ public class HtmlParser implements Module{
 					}
 					String[] outputs = new String[1];
 					title = title.substring(1);
-					outputs[0] = ("PRIVMSG " + target + " :[URL] " + title + "(" + url.getHost() + ")");
+					outputs[0] = (target + " :[URL] " + title + "(" + url.getHost() + ")");
 					return outputs;
 				}
 				catch(Exception e){
 					String[] outputs = new String[1];
 					e.printStackTrace();
-					outputs[0] = ("PRIVMSG " + target + " :Could not read url, " + e);
+					outputs[0] = (target + " :Could not read url, " + e);
 					return outputs;
 				}
 			}

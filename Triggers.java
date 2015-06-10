@@ -55,8 +55,8 @@ public class Triggers implements Module {
 	@Override
 	public String[] outputs() {
 		String[] outputs = new String[1];
-		String target = m.getParam();
-		if(!target.startsWith("#")) target = m.getSender();
+		String target = "PRIVMSG " + m.getParam();
+		if(!target.startsWith("#")) target = "NOTICE " + m.getSender();
 		if(m.getBotCommand().equals("trigger")){
 			if(admin){
 				if(m.hasBotParams()){
@@ -65,17 +65,17 @@ public class Triggers implements Module {
 						String value = m.getBotParamsString().split(" : ")[1];
 						triggers.put(key, value);
 						write();
-						if (triggers.size() == 1) outputs[0] = "PRIVMSG " + target + " :Trigger added. There is now " + triggers.size() + " trigger set.";
-						else outputs[0] = "PRIVMSG " + target + " :Trigger added. There is now " + triggers.size() + " triggers set.";
+						if (triggers.size() == 1) outputs[0] = target + " :Trigger added. There is now " + triggers.size() + " trigger set.";
+						else outputs[0] = target + " :Trigger added. There is now " + triggers.size() + " triggers set.";
 						return outputs;
 					}
 					else{
-						outputs[0] = "PRIVMSG " + target + " :Not enough parameters specified";
+						outputs[0] = target + " :Not enough parameters specified";
 						return outputs;
 					}
 				}
 				else{
-					outputs[0] = "PRIVMSG " + target + " :Not enough parameters specified";
+					outputs[0] = target + " :Not enough parameters specified";
 					return outputs;
 				}
 			}
@@ -86,17 +86,17 @@ public class Triggers implements Module {
 					if(triggers.containsKey(m.getBotParamsString())){
 						triggers.remove(m.getBotParamsString());
 						write();
-						if (triggers.size() == 1) outputs[0] = "PRIVMSG " + target + " :Trigger removed. There is now " + triggers.size() + " trigger set.";
-						else outputs[0] = "PRIVMSG " + target + " :Trigger removed. There is now " + triggers.size() + " triggers set.";
+						if (triggers.size() == 1) outputs[0] = target + " :Trigger removed. There is now " + triggers.size() + " trigger set.";
+						else outputs[0] = target + " :Trigger removed. There is now " + triggers.size() + " triggers set.";
 					}
 					else{
-						if (triggers.size() == 1) outputs[0] = "PRIVMSG " + target + " :Trigger not found. There is still " + triggers.size() + " trigger set.";
-						else outputs[0] = "PRIVMSG " + target + " :Trigger not found. There is still " + triggers.size() + " triggers set.";
+						if (triggers.size() == 1) outputs[0] = target + " :Trigger not found. There is still " + triggers.size() + " trigger set.";
+						else outputs[0] = target + " :Trigger not found. There is still " + triggers.size() + " triggers set.";
 					}
 					return outputs;
 				}
 				else{
-					outputs[0] = "PRIVMSG " + target + " :No trigger was specified";
+					outputs[0] = target + " :No trigger was specified";
 					return outputs;
 				}
 			}
@@ -108,11 +108,11 @@ public class Triggers implements Module {
 				return outputs;
 			}
 			outputs = new String[triggers.size() + 1];
-			if (triggers.size() == 1) outputs[0] = "PRIVMSG " + target + " :There is " + triggers.size() + " trigger set.";
-			else outputs[0] = "PRIVMSG " + target + " :There is " + triggers.size() + " triggers set.";
+			if (triggers.size() == 1) outputs[0] = target + " :There is " + triggers.size() + " trigger set.";
+			else outputs[0] = target + " :There is " + triggers.size() + " triggers set.";
 			int i = 1;
 			for(Entry<String, String> entry : triggers.entrySet()){
-				outputs[i] = "PRIVMSG " + target + " :" + entry.getKey() + " : " + entry.getValue();
+				outputs[i] = target + " :" + entry.getKey() + " : " + entry.getValue();
 				i++;
 			}
 			return outputs;
@@ -124,7 +124,7 @@ public class Triggers implements Module {
 				if(m.getTrailing().toLowerCase().contains(entry.getKey())){
 					String message = entry.getValue();
 					message = message.replace("&sender", m.getSender());
-					outputs[0] = "PRIVMSG " + target + " :" + message;
+					outputs[0] = target + " :" + message;
 					return outputs;	
 				}
 			}

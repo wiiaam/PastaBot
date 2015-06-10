@@ -14,8 +14,8 @@ public class Version implements Module {
 	@Override
 	public String[] outputs() {
 		String[] outputs = new String[1];
-		String target = m.getParam();
-		if(!target.startsWith("#")) target = m.getSender();
+		String target = "PRIVMSG " + m.getParam();
+		if(!target.startsWith("#")) target = "NOTICE " + m.getSender();
 		if(m.getTrailing().equals("VERSION")){
 			outputs[0] = "NOTICE " + target + " :VERSION PastaBot 4.20 by Java™ Enterprises";
 			return outputs;
@@ -41,7 +41,7 @@ public class Version implements Module {
 					version = version.replace("WeeChat", "WeebChat");
 					version = version.replace("weechat", "weebchat");
 					version = version.replace("Weechat", "Weebchat");
-					outputs[0] = "PRIVMSG " + requests.get(m.getSender()) +  " :[" + m.getSender() + "] Version: " + version;
+					outputs[0] = requests.get(m.getSender()) +  " :[" + m.getSender() + "] Version: " + version;
 					requests.remove(m.getSender());
 					return outputs;
 				}

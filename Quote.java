@@ -15,15 +15,15 @@ public class Quote implements Module {
 	@Override
 	public String[] outputs() {
 		String[] outputs = new String[1];
-		String target = m.getParam();
-		if(!target.startsWith("#")) target = m.getSender();
+		String target = "PRIVMSG " + m.getParam();
+		if(!target.startsWith("#")) target = "NOTICE " + m.getSender();
 		if(m.isBotCommand()){
 			if(m.getBotCommand().equals("quote")){
 				if(m.hasBotParams()){
 					String user = m.getBotParams().get(0);
 					if(quotes.get(user) != null){
 						int random = (int)Math.floor(Math.random() * quotes.get(user).size());
-						outputs[0] = "PRIVMSG " + target + " :<" + user + "> " + quotes.get(user).get(random);
+						outputs[0] = target + " :<" + user + "> " + quotes.get(user).get(random);
 						return outputs;
 					}
 				}
