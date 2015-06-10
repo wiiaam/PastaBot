@@ -11,6 +11,8 @@
 - `.version <users>`, `.ver <users>` - Reports the versions of the requested users.
 - `.listtriggers` - Lists all of the word triggers and their outputs.
 - `.ping <user>` - Sends a ctcp PING to the user and shows the result.
+- `.fortune` - Displays your fortune.
+- `.8ball` - Ask the magic 8ball.
 
 ## Admin only commands
 - `.admin <action> <users>` - (`add`, `del`) the specified users to the admin group.
