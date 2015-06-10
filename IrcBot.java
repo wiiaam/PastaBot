@@ -47,6 +47,7 @@ public class IrcBot {
 		modules.add(new Ping());
 		modules.add(new Fortune());
 		modules.add(new Rainbow());
+		modules.add(new SadFrog());
 		
 		
 		if(admins == null){
@@ -179,9 +180,15 @@ public class IrcBot {
 								for(int i = 0; i < outputs.length; i++){
 									clientout.println(outputs[i]);
 									send(outputs[i]);
-									if(module.getClass().getName().equals("Admins")){
-										admins = (Admins)module;
+									try {
+										Thread.sleep(500);
+									} catch (InterruptedException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
 									}
+								}
+								if(module.getClass().getName().equals("Admins")){
+									admins = (Admins)module;
 								}
 							}
 						}
