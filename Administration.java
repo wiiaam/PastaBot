@@ -22,8 +22,8 @@ public class Administration implements Module {
 						for(int i = 2; i < m.getBotParams().size(); i++){
 							
 						}
-						outputs[0] = "KICK " + m.getParam() + " :" + m.getBotParams().get(0);
-						outputs[1] = "MODE " + m.getParam() + " +b " + m.getBotParams().get(0);
+						outputs[1] = "KICK " + m.getParam() + " :" + m.getBotParams().get(0);
+						outputs[0] = "MODE " + m.getParam() + " +b " + m.getBotParams().get(0);
 					}
 				}
 				else{
