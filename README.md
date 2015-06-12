@@ -8,6 +8,8 @@ IRC administration bot for [#pasta](irc://irc.rizon.net/#pasta) (irc.rizon.net)
 - Versions
 - Quotes
 - Triggers
+- Sad frogs
+- Voting
 
 ## Commands
 Commands can be found in the [COMMANDS](COMMANDS.md) file

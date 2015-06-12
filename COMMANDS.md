@@ -17,6 +17,9 @@
 - `.fortune` - Displays your fortune.
 - `.8ball` - Ask the magic 8ball.
 - `.rb <message>` - Displays the message in rainbow colours.
+- `.vote <topic>` - Creates a vote.
+- `.voteyes` - Vote yes.
+- `.voteno` - Vote no.
 
 ## Admin only commands
 - `.admin <action> <users>` - (`add`, `del`) the specified users to the admin group.

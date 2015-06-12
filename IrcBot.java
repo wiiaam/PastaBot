@@ -20,6 +20,7 @@ public class IrcBot {
 	private boolean listening = false;
 	private Ignores ignores;
 	private String password;
+	private Voting voting;
 	
 	/**
 	 * Creates a new IrcBot
@@ -33,6 +34,10 @@ public class IrcBot {
 		
 		ignores = new Ignores();
 		modules.add(ignores);
+		
+		voting = new Voting();
+		
+		modules.add(voting);
 		
 		modules.add(new Bots());
 		//modules.add(new HtmlParser());
@@ -160,6 +165,8 @@ public class IrcBot {
 		clientout.println("Listening to server");
 		send("JOIN " + props.getProperty("channel"));
 		send("JOIN #/g/bots");
+		send("PRIVMSG " + props.getProperty("channel") + " :Daily reminder that java is the best programming language");
+		
 		while(true){
 			if(serverin.hasNextLine()){
 				String line = serverin.nextLine();
@@ -168,7 +175,7 @@ public class IrcBot {
 				clientout.println(m.getTrailing());
 				final Message message = m;
 				final boolean senderisadmin = (admins.has(message.getSender()) || permaadmin.equals(message.getSender()));
-				if(ignores.has(m.getSender()) && !senderisadmin){
+				if(m.getCommand().equals("PRIVMSG") && ignores.has(m.getSender()) && !senderisadmin){
 					clientout.println("ignoring message");
 					continue;
 				}
@@ -183,17 +190,23 @@ public class IrcBot {
 									send(outputs[i]);
 									try {
 										Thread.sleep(500);
-									} catch (InterruptedException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}
+									} 
+									catch (InterruptedException e) {}
 								}
 								if(module.getClass().getName().equals("Admins")){
 									admins = (Admins)module;
 								}
+								if(module.getClass().getName().equals("Ignores")){
+									ignores = (Ignores)module;
+								}
+								if(module.getClass().getName().equals("Voting")){
+									voting.giveStream(serverout);
+									voting = (Voting)module;
+								}
 							}
 						}
 					}).start();
+					
 				}
 			}
 		}
@@ -251,9 +264,6 @@ public class IrcBot {
 			}
 		}
 	}
-	
-	
-	
 	public static void main(String[] args){
 		new IrcBot();
 	}
