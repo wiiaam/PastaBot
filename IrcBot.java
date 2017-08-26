@@ -108,6 +108,7 @@ public class IrcBot {
 					String line = serverin.nextLine();
 					//clientout.println(line);
 					Message m = new Message(line);
+					if(m.getCommand().equals("PING")) send("PONG :" + m.getTrailing());
 					if(m.getCommand().equals("002")) clientout.println("Connected");
 					if(m.getCommand().equals("433")) clientout.println("Nick in use");
 					if(m.getCommand().equals("451")) clientout.println("Register first");
